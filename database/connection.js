@@ -9,18 +9,26 @@
 const { Sequelize, DataTypes } = require("sequelize");
 
 const SequelizeObject = new Sequelize(
- "postgresql://postgres.iuzihccpanbgqhcxaqsp:omnamahshivaye@aws-0-ap-south-1.pooler.supabase.com:6543/postgres"
+  "postgresql://postgres.iuzihccpanbgqhcxaqsp:omnamahshivaye@aws-0-ap-south-1.pooler.supabase.com:6543/postgres"
 );
 
-SequelizeObject.authenticate().then(()=>{
-    console.log("Authenticate done, connected")
-}).catch((err)=>{
-    console.log("Error" + err)
+SequelizeObject.authenticate()
+  .then(() => {
+    console.log("Authenticate done, connected");
+  })
+  .catch((err) => {
+    console.log("Error" + err);
+  });
+
+const db = {};
+db.Sequelize = Sequelize;
+db.SequelizeObject = SequelizeObject;
+
+db.books = require("./models/book.model")(SequelizeObject, DataTypes);
+db.users = require("./models/user.models")(SequelizeObject, DataTypes);
+
+//migrate code
+SequelizeObject.sync({force : false,alter : true}).then(()=>{
+  console.log("Migrate done")
 })
-
-const db = {}
-db.Sequelize = Sequelize
-db.SequelizeObject = SequelizeObject
-
-module.exports = db
-
+module.exports = db;
