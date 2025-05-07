@@ -3,6 +3,7 @@ const bookModel = (sequelize, DataTypes) => {
     bookName: {
       type: DataTypes.STRING,
       allowNull: false,
+
     },
     Price: {
       type: DataTypes.INTEGER,
@@ -13,6 +14,9 @@ const bookModel = (sequelize, DataTypes) => {
 
       defaultValue: "Bipin Sainju",
     },
+    bookGenre : {
+      type : DataTypes.STRING
+    }
   })
   console.log("book triggred")
   return Book
