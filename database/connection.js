@@ -25,7 +25,7 @@ db.Sequelize = Sequelize;
 db.SequelizeObject = SequelizeObject;
 
 db.books = require("./models/book.model")(SequelizeObject, DataTypes);
-db.users = require("./models/user.models")(SequelizeObject, DataTypes);
+
 
 //migrate code
 SequelizeObject.sync({force : false,alter : true}).then(()=>{
