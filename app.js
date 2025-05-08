@@ -1,57 +1,25 @@
 const express = require("express");
-const { books } = require("./database/connection");
+// const { books } = require("./database/connection");
+// const { fetchBooks, addBook, deleteBook, editBook } = require("./controllers/bookController");
+
+const bookRoute = require("./routes/bookRoute")
 
 const app = express();
 
 require("./database/connection");
 // instead of first two line we can write like this also
 // let app = require('express')()
-app.use(express.json())  // this is important to add
+app.use(express.json()); // this is important to add
 
-app.get("/books", async (req, res) => {
-  const datas = await books.findAll(); //select all for books
-  res.json({
-    message: "books fetched successfully",
-    //datas : datas
-    datas
-  });
-});
+app.use("",bookRoute)
 
-app.post("/books", async (req, res) => {
-  console.log(req.body)
-  const bookName = req.body.bookName
-  const bookPrice = req.body.price
-  const bookAuthor = req.body.auther
-  const bookGenre = req.body.genre
+// app.get("/books",fetchBooks);
 
-  console.log(bookName)
-  console.log(bookPrice)
-  console.log(bookAuthor)
-  console.log(bookGenre)
-  // const {bookName,bookPrice,bookAuthor,bookGenre} = req.body    this is called destructuring
+// app.post("/books",addBook);
 
-  await books.create({
-    bookName : bookName, //columnName : value
-    Price : bookPrice,
-    Author : bookAuthor,
-    bookGenre
-  })
-  res.json({
-    message: "Books added successfully",
-  });
-});
+// app.delete("/books/:id",deleteBook);
 
-app.delete("/books/:id", (req, res) => {
-  res.json({
-    message: "Books Deleted Successfully",
-  });
-});
-
-app.patch("/books/:id", (req, res) => {
-  res.json({
-    message: "Books Updated Successfully",
-  });
-});
+// app.patch("/books/:id",editBook);
 
 // DATABASE_URL="postgresql://postgres.iuzihccpanbgqhcxaqsp:Baspbasp12@#@aws-0-ap-south-1.pooler.supabase.com:6543/postgres"   this is not used in her mistake written
 

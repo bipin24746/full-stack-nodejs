@@ -20,7 +20,7 @@ SequelizeObject.authenticate()
     console.log("Error" + err);
   });
 
-const db = {};
+const db = {}; 
 db.Sequelize = Sequelize;
 db.SequelizeObject = SequelizeObject;
 
