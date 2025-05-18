@@ -13,9 +13,9 @@ exports.fetchBooks = async (req, res) => {
 exports.addBook = async (req, res) => {
   console.log(req.body);
   const bookName = req.body.bookName;
-  const bookPrice = req.body.price;
-  const bookAuthor = req.body.auther;
-  const bookGenre = req.body.genre;
+  const bookPrice = req.body.bookPrice;
+  const bookAuthor = req.body.bookAuthor;
+  const bookGenre = req.body.bookGenre;
 
   console.log(bookName);
   console.log(bookPrice);
@@ -25,8 +25,8 @@ exports.addBook = async (req, res) => {
 
   await books.create({
     bookName: bookName, //columnName : value
-    Price: bookPrice,
-    Author: bookAuthor,
+    bookPrice: bookPrice,
+    bookAuthor: bookAuthor,
     bookGenre,
   });
   res.json({
@@ -36,12 +36,12 @@ exports.addBook = async (req, res) => {
 
 exports.editBook = async (req, res) => {
   const id = req.params.id;
-  const { bookName, Price, Author, bookGenre } = req.body;
+  const { bookName, bookPrice, bookAuthor, bookGenre } = req.body;
 
   await books.update({
     bookName: bookName,
-    Price: Price,
-    Author: Author,
+    bookPrice: bookPrice,
+    bookAuthor: bookAuthor,
     bookGenre: bookGenre,
   },{
     where : {

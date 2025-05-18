@@ -5,11 +5,11 @@ const bookModel = (sequelize, DataTypes) => {
       allowNull: false,
 
     },
-    Price: {
+    bookPrice: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    Author: {
+    bookAuthor: {
       type: DataTypes.STRING,
 
       defaultValue: "Bipin Sainju",

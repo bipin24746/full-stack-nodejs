@@ -10,6 +10,7 @@ const { Sequelize, DataTypes } = require("sequelize");
 
 const SequelizeObject = new Sequelize(
   "postgresql://postgres.iuzihccpanbgqhcxaqsp:omnamahshivaye@aws-0-ap-south-1.pooler.supabase.com:6543/postgres"
+
 );
 
 SequelizeObject.authenticate()
