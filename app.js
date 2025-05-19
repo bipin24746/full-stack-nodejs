@@ -6,6 +6,11 @@ const bookRoute = require("./routes/bookRoute")
 
 const app = express();
 
+const cors = require("cors")
+app.use(cors({
+  origin : "http://localhost:5173"
+}))
+
 require("./database/connection");
 // instead of first two line we can write like this also
 // let app = require('express')()
